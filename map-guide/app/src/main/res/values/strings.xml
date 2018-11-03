@@ -1,5 +1,5 @@
 <resources>
-    <string title="google_maps_API_key">AIzaSyBU3KXc1BddyjLcy-tS3dr4cQKQt9aHKKo</string>
-    <string title="map">Map</string>
-    <string title="app_name">MapGuide</string>
+    <string name="google_maps_API_key">AIzaSyBU3KXc1BddyjLcy-tS3dr4cQKQt9aHKKo</string>
+    <string name="map">Map</string>
+    <string name="app_name">MapGuide</string>
 </resources>
