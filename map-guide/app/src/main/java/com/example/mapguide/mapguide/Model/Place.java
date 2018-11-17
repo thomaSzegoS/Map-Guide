@@ -1,39 +1,42 @@
 package com.example.mapguide.mapguide.Model;
 
-import com.google.android.gms.maps.model.LatLng;
-
 public class Place {
 
 
-    private String title, description; // onoma perioxhs ,perigrafh perioxhs
-    private LatLng coordinates; // syntetagmenes latitude ,longtude
+    private String lat, lon, areaName;
 
     public Place() {
 
     }
 
-    public Place(String title, String description, LatLng coordinates) {
-        this.title = title;
-        this.description = description;
-        this.coordinates = coordinates;
+    public Place(String lat, String lon, String areaName) {
+        this.lat = lat;
+        this.lon = lon;
+        this.areaName = areaName;
     }
 
-    public void setTitle(String title) {
-
-        this.title = title;
+    public String getAreaName() {
+        return areaName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
     }
 
-    public String getTitle() {
-        return title;
-
+    public String getLat() {
+        return lat;
     }
 
-    public String getDescription() {
-        return description;
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
     }
 
 
