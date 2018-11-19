@@ -19,24 +19,26 @@ import javax.net.ssl.HttpsURLConnection;
 public class FlickrServices {
     public ArrayList<String[]> PhotosData;
 
-    public FlickrServices()  {
+
+    public void GetSearch20(String SearchText) {
         try {
             PhotosData = new ArrayList<>();
             // Get Flickr data in String
-            String ObjectInString =  new SearchFlickr().execute("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=522d3b1175d09b060103fa1152d9cec4&&text=places&sort=interestingness-desc&has_geo=1&extras=geo%2Cdescription&format=json&nojsoncallback=1&per_page=20&page=1").get();
+            String ObjectInString = new SearchFlickr().execute("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=522d3b1175d09b060103fa1152d9cec4&text="+SearchText+"&sort=interestingness-desc&has_geo=1&extras=geo%2Cdescription&format=json&nojsoncallback=1&per_page=20&page=1").get();
             JSONObject Object = new JSONObject(ObjectInString);
             JSONObject ResultObjectPhotos = Object.getJSONObject("photos");
             JSONArray ResultPhoto = ResultObjectPhotos.getJSONArray("photo");
-            for (int i=0; i< ResultPhoto.length(); i++){
+            for (int i = 0; i < ResultPhoto.length(); i++) {
                 JSONObject ResultObjectPhoto = ResultPhoto.getJSONObject(i);
-                String link = "http://farm"+ResultObjectPhoto.get("farm").toString()+".static.flickr.com/"+ResultObjectPhoto.get("server").toString()+"/"+ResultObjectPhoto.get("id").toString()+"_"+ResultObjectPhoto.get("secret").toString()+".jpg";
+                String link = "http://farm" + ResultObjectPhoto.get("farm").toString() + ".static.flickr.com/" + ResultObjectPhoto.get("server").toString() + "/" + ResultObjectPhoto.get("id").toString() + "_" + ResultObjectPhoto.get("secret").toString() + ".jpg";
                 String id = ResultObjectPhoto.get("id").toString();
                 String title = ResultObjectPhoto.get("title").toString();
-                JSONObject PhotoDescription =  ResultObjectPhoto.getJSONObject("description");
+                JSONObject PhotoDescription = ResultObjectPhoto.getJSONObject("description");
                 String desc = PhotoDescription.get("_content").toString();
-                String lat =   ResultObjectPhoto.get("latitude").toString();;
+                String lat = ResultObjectPhoto.get("latitude").toString();
+                ;
                 String lon = ResultObjectPhoto.get("longitude").toString();
-                String[] OnePhotoData={id,title,link,lat,lon,desc};
+                String[] OnePhotoData = {id, title, link, lat, lon, desc};
                 PhotosData.add(OnePhotoData);
             }
         } catch (JSONException e) {
@@ -45,9 +47,39 @@ public class FlickrServices {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
+
         }
+    }
 
+    public void GetTop20() {
+        try {
+            PhotosData = new ArrayList<>();
+            // Get Flickr data in String
+            String ObjectInString = new SearchFlickr().execute("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=522d3b1175d09b060103fa1152d9cec4&text=places&sort=interestingness-desc&has_geo=1&extras=geo%2Cdescription&format=json&nojsoncallback=1&per_page=20&page=1").get();
+            JSONObject Object = new JSONObject(ObjectInString);
+            JSONObject ResultObjectPhotos = Object.getJSONObject("photos");
+            JSONArray ResultPhoto = ResultObjectPhotos.getJSONArray("photo");
+            for (int i = 0; i < ResultPhoto.length(); i++) {
+                JSONObject ResultObjectPhoto = ResultPhoto.getJSONObject(i);
+                String link = "http://farm" + ResultObjectPhoto.get("farm").toString() + ".static.flickr.com/" + ResultObjectPhoto.get("server").toString() + "/" + ResultObjectPhoto.get("id").toString() + "_" + ResultObjectPhoto.get("secret").toString() + ".jpg";
+                String id = ResultObjectPhoto.get("id").toString();
+                String title = ResultObjectPhoto.get("title").toString();
+                JSONObject PhotoDescription = ResultObjectPhoto.getJSONObject("description");
+                String desc = PhotoDescription.get("_content").toString();
+                String lat = ResultObjectPhoto.get("latitude").toString();
+                ;
+                String lon = ResultObjectPhoto.get("longitude").toString();
+                String[] OnePhotoData = {id, title, link, lat, lon, desc};
+                PhotosData.add(OnePhotoData);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
 
+        }
     }
 
     private class SearchFlickr extends AsyncTask<String, Void, String> {
