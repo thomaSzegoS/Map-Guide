@@ -2,6 +2,7 @@ package com.example.mapguide.mapguide.Activities;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,7 +19,8 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 public class TabActivity extends AppCompatActivity {
 
-    ImageView img;
+    Button favBtn;
+    ImageView img,fimg;
     TextView tx_title, tx_location, tx_description;
 
 
@@ -29,11 +31,14 @@ public class TabActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         MapServices services = new MapServices();
 
+        fimg = findViewById(R.id.fullscreenView);
+        favBtn = findViewById(R.id.favButton);
         img = findViewById(R.id.image);
         tx_title = findViewById(R.id.textTitle);
         tx_location = findViewById(R.id.textLocation);
         tx_description = findViewById(R.id.textDesc);
 
+        fimg.setImageResource(getIntent().getIntExtra("img_id",00));
         img.setImageResource(getIntent().getIntExtra("img_id",00));
         tx_title.setText("Text : "+getIntent().getStringExtra("text"));
         tx_location.setText("Location : "+getIntent().getStringExtra("location"));
@@ -43,8 +48,26 @@ public class TabActivity extends AppCompatActivity {
         if (services.isServicesOK()) {
             loadMapActivity();
         }
+        favBtn.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v){
+                                          favBtn.setBackgroundColor(Color.RED);
+                                      }
+                                  }
+        );
+
+        fimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openfullscreen();
+            }
+        });
     }
 
+    public void openfullscreen(){
+        Intent intent = new Intent(this, fullscreen.class);
+        startActivity(intent);
+    }
 
     private void loadMapActivity() {
         Button btnMap = (Button) findViewById(R.id.btnMap);
