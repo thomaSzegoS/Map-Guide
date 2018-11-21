@@ -1,39 +1,69 @@
 package com.example.mapguide.mapguide.Model;
 
-import com.google.android.gms.maps.model.LatLng;
 
-public class Place {
+import android.widget.TextView;
+import android.widget.ImageView;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.example.mapguide.mapguide.R;
 
 
-    private String title, description; // onoma perioxhs ,perigrafh perioxhs
-    private LatLng coordinates; // syntetagmenes latitude ,longtude
+public class Place extends AppCompatActivity {
+
+     private ImageView img;
+     private TextView head, desc;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        img = findViewById(R.id.image);
+        head = findViewById(R.id.textViewHead);
+        desc = findViewById(R.id.textViewDesc);
+
+        img.setImageResource(getIntent().getIntExtra("img_id", 00));
+        head.setText("Text : " + getIntent().getStringExtra("text"));
+        desc.setText("Description : " + getIntent().getStringExtra("description"));
+    }
+
+
+    private String lat, lon, areaName;
 
     public Place() {
 
     }
 
-    public Place(String title, String description, LatLng coordinates) {
-        this.title = title;
-        this.description = description;
-        this.coordinates = coordinates;
+    public Place(String lat, String lon, String areaName) {
+        this.lat = lat;
+        this.lon = lon;
+        this.areaName = areaName;
     }
 
-    public void setTitle(String title) {
-
-        this.title = title;
+    public String getAreaName() {
+        return areaName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
     }
 
-    public String getTitle() {
-        return title;
-
+    public String getLat() {
+        return lat;
     }
 
-    public String getDescription() {
-        return description;
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
     }
 
 
