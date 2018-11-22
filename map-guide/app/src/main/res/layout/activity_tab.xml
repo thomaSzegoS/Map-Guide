@@ -81,4 +81,13 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="113dp"
         tools:layout_editor_absoluteY="306dp" />
+
+    <Button
+        android:id="@+id/favButton"
+        android:layout_width="63dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_favorite_black_24dp"
+        android:backgroundTint="@android:color/white"
+        tools:layout_editor_absoluteX="318dp"
+        tools:layout_editor_absoluteY="0dp" />
 </android.support.constraint.ConstraintLayout>
