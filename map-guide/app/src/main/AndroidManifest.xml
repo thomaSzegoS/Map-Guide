@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MapActivity" />
-        <activity android:name=".RecyclerView"></activity>
+        <activity android:name=".RecyclerView" />
     </application>
 
 </manifest>
