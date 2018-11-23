@@ -34,21 +34,27 @@ public class FlickrServices {
             JSONObject ResultObjectPhotos = Object.getJSONObject ("photos");
             JSONArray ResultPhoto = ResultObjectPhotos.getJSONArray ("photo");
             for (int i = 0; i < ResultPhoto.length (); i++) {
+
                 JSONObject ResultObjectPhoto = ResultPhoto.getJSONObject (i);
                 String link = "http://farm" + ResultObjectPhoto.get ("farm").toString () + ".static.flickr.com/" + ResultObjectPhoto.get ("server").toString () + "/" + ResultObjectPhoto.get ("id").toString () + "_" + ResultObjectPhoto.get ("secret").toString () + ".jpg";
                 imageModel.setLinkImg (link);
-                String id = ResultObjectPhoto.get ("id").toString ();
+
+                String id = ResultObjectPhoto.get("id").toString ();
                 imageModel.setId (id);
+
                 String title = ResultObjectPhoto.get ("title").toString ();
                 imageModel.setTitle (title);
+
                 JSONObject PhotoDescription = ResultObjectPhoto.getJSONObject ("description");
                 String desc = PhotoDescription.get ("_content").toString ();
                 imageModel.setDesc (desc);
+
                 String lat = ResultObjectPhoto.get ("latitude").toString ();
                 Place place = new Place ();
                 place.setLat(lat);
                 String lon = ResultObjectPhoto.get ("longitude").toString ();
                 place.setLon (lon);
+
                 String[] OnePhotoData = {id, title, link, lat, lon, desc};
                 PhotosData.add(imageModel);
             }

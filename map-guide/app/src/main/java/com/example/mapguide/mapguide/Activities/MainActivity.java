@@ -17,6 +17,7 @@ import com.example.mapguide.mapguide.Model.ImageModel;
 import com.example.mapguide.mapguide.R;
 import com.example.mapguide.mapguide.Services.FlickrServices;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,7 +27,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String URL_DATA = "https://upload.wikimedia.org/wikipedia/de/7/7e/ValdemarPoulsen.jpg";
+    private static final String URL_DATA = "https://simplifiedcoding.net/demos/marvel/";
     private RecyclerView recyclerView;
     private android.support.v7.widget.RecyclerView.Adapter adapter;
 
@@ -39,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         FlickrServices r = new FlickrServices();
         for (int i = 0; i < r.PhotosData.size(); i++) {
-            ImageModel photo = r.PhotosData.get(i);
-            System.out.println ("ID:" + photo.getId () + ", Title:" + photo.getTitle() + ", Link:" + photo.getLinkImg() + ", Latitude:" + photo.getPlace().getLat () + ", Longitude:" + photo.getPlace().getLon () + ", Description:" + photo.getDesc() + " ");
+            ImageModel photo = r.PhotosData.get (i);
+            System.out.println ("ID:" + photo.getId () + ", Title:" + photo.getTitle () + ", Link:" + photo.getLinkImg () + ", Latitude:" + photo.getPlace ().getLat () + ", Longitude:" + photo.getPlace ().getLon () + ", Description:" + photo.getDesc () + " ");
         }
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -54,15 +55,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadRecyclerViewData(){
-        ProgressDialog progressDialog = new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading data...");
         progressDialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.GET,URL_DATA,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
+                        progressDialog.dismiss();
                         try {
                             JSONObject jsonObject = new JSONObject(s);
+                            JSONArray array = jsonObject.getJSONArray("heroes");
+                            for(int i = 0; i<array.length(); i++){
+                                JSONObject o =array.getJSONObject(i);
+                                ListItem item = new ListItem(
+                                        o.getString("name"),
+                                        o.getString("about"),
+                                        o.getString("image")
+                                );
+                                listItems.add(item);
+                            }
+                            adapter = new MyAdapter(listItems,getApplicationContext());
+                            recyclerView.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -71,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        progressDialog.dismiss();
                     }
 
                 });
