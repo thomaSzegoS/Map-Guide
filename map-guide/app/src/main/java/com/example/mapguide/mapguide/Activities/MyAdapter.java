@@ -1,4 +1,4 @@
-package com.example.mapguide.mapguide;
+package com.example.mapguide.mapguide.Activities;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -24,7 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item, parent, false);
+                .inflate(com.example.mapguide.mapguide.R.layout.list_item, parent, false);
         return new ViewHolder(v);
     }
 
@@ -50,8 +50,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewHead = (TextView) itemView.findViewById(R.id.textViewHead);
-            textViewDesc = (TextView) itemView.findViewById(R.id.textViewDesc);
+            textViewHead = (TextView) itemView.findViewById(com.example.mapguide.mapguide.R.id.textViewHead);
+            textViewDesc = (TextView) itemView.findViewById(com.example.mapguide.mapguide.R.id.textViewDesc);
         }
     }
 }

@@ -46,12 +46,11 @@ public class FlickrServices {
                 imageModel.setDesc (desc);
                 String lat = ResultObjectPhoto.get ("latitude").toString ();
                 Place place = new Place ();
-                place.setLat (lat);
+                place.setLat(lat);
                 String lon = ResultObjectPhoto.get ("longitude").toString ();
                 place.setLon (lon);
-                imageModel.setPlace (place);
                 String[] OnePhotoData = {id, title, link, lat, lon, desc};
-                PhotosData.add (imageModel);
+                PhotosData.add(imageModel);
             }
         } catch (JSONException e) {
             e.printStackTrace ();
