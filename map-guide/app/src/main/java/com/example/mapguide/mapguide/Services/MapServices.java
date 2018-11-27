@@ -3,6 +3,7 @@ package com.example.mapguide.mapguide.Services;
 import android.app.Dialog;
 import android.util.Log;
 
+import com.example.mapguide.mapguide.Activities.GalleryActivity;
 import com.example.mapguide.mapguide.Activities.TabActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -10,12 +11,13 @@ import com.google.android.gms.common.GoogleApiAvailability;
 public class MapServices {
     /*************************Checking Api Services Availability ***********************************************/
 
-    private static final String TAG = "TabActivity";
+    private static final String TAG = "MapServices";
     private static final int ERROR_DIALOG_REQUEST = 9001;
-    private TabActivity tabActivity;
+    private GalleryActivity tabActivity;
 
     public boolean isServicesOK() {
         Log.d(TAG, "isServicesOK: checking google services version");
+        tabActivity = new GalleryActivity();
 
         int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(tabActivity);
 
