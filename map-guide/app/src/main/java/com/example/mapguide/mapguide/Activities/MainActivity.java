@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -40,8 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
         FlickrServices r = new FlickrServices();
         for (int i = 0; i < r.PhotosData.size(); i++) {
+            Log.e ("Check Here", String.valueOf (i));
             ImageModel photo = r.PhotosData.get (i);
+            //try {
             System.out.println ("ID:" + photo.getId () + ", Title:" + photo.getTitle () + ", Link:" + photo.getLinkImg () + ", Latitude:" + photo.getPlace ().getLat () + ", Longitude:" + photo.getPlace ().getLon () + ", Description:" + photo.getDesc () + " ");
+            // }catch (Exception e){
+            //    Log.e ("ERRRRROOOOORRRR",e.toString ());
+            //}
         }
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);

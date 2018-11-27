@@ -55,7 +55,10 @@ public class FlickrServices {
                 String lon = ResultObjectPhoto.get ("longitude").toString ();
                 place.setLon (lon);
 
-                String[] OnePhotoData = {id, title, link, lat, lon, desc};
+                imageModel.setPlace (place);
+
+                //String[] OnePhotoData = {id, title, link, lat, lon, desc};
+                System.out.println ("ID:" + imageModel.getId () + ", Title:" + imageModel.getTitle () + ", Link:" + imageModel.getLinkImg () + ", Latitude:" + imageModel.getPlace ().getLat () + ", Longitude:" + imageModel.getPlace ().getLon () + ", Description:" + imageModel.getDesc () + " ");
                 PhotosData.add(imageModel);
             }
         } catch (JSONException e) {
