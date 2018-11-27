@@ -41,13 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
         FlickrServices r = new FlickrServices();
         for (int i = 0; i < r.PhotosData.size(); i++) {
-            Log.e ("Check Here", String.valueOf (i));
+
             ImageModel photo = r.PhotosData.get (i);
-            //try {
-            System.out.println ("ID:" + photo.getId () + ", Title:" + photo.getTitle () + ", Link:" + photo.getLinkImg () + ", Latitude:" + photo.getPlace ().getLat () + ", Longitude:" + photo.getPlace ().getLon () + ", Description:" + photo.getDesc () + " ");
-            // }catch (Exception e){
-            //    Log.e ("ERRRRROOOOORRRR",e.toString ());
-            //}
+
+            System.out.println (i + ". ID:" + photo.getId () + ", Title:" + photo.getTitle () + ", Link:" + photo.getLinkImg () + ", Latitude:" + photo.getPlace ().getLat () + ", Longitude:" + photo.getPlace ().getLon () + ", Description:" + photo.getDesc () + " ");
+            
         }
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);

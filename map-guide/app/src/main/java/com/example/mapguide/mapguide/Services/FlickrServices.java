@@ -29,7 +29,7 @@ public class FlickrServices {
             PhotosData = new ArrayList<> ();
             // Get Flickr data in String
             String ObjectInString = new SearchFlickr ().execute ("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=522d3b1175d09b060103fa1152d9cec4&&text=places&sort=interestingness-desc&has_geo=1&extras=geo%2Cdescription&format=json&nojsoncallback=1&per_page=20&page=1").get ();
-            ImageModel imageModel = new ImageModel ();
+
             JSONObject Object = new JSONObject (ObjectInString);
             JSONObject ResultObjectPhotos = Object.getJSONObject ("photos");
             JSONArray ResultPhoto = ResultObjectPhotos.getJSONArray ("photo");
@@ -37,28 +37,15 @@ public class FlickrServices {
 
                 JSONObject ResultObjectPhoto = ResultPhoto.getJSONObject (i);
                 String link = "http://farm" + ResultObjectPhoto.get ("farm").toString () + ".static.flickr.com/" + ResultObjectPhoto.get ("server").toString () + "/" + ResultObjectPhoto.get ("id").toString () + "_" + ResultObjectPhoto.get ("secret").toString () + ".jpg";
-                imageModel.setLinkImg (link);
-
                 String id = ResultObjectPhoto.get("id").toString ();
-                imageModel.setId (id);
-
                 String title = ResultObjectPhoto.get ("title").toString ();
-                imageModel.setTitle (title);
-
                 JSONObject PhotoDescription = ResultObjectPhoto.getJSONObject ("description");
                 String desc = PhotoDescription.get ("_content").toString ();
-                imageModel.setDesc (desc);
-
                 String lat = ResultObjectPhoto.get ("latitude").toString ();
-                Place place = new Place ();
-                place.setLat(lat);
                 String lon = ResultObjectPhoto.get ("longitude").toString ();
-                place.setLon (lon);
+                ImageModel imageModel = new ImageModel (link, id, desc, title);
+                imageModel.setPlace (new Place (lat, lon, ""));
 
-                imageModel.setPlace (place);
-
-                //String[] OnePhotoData = {id, title, link, lat, lon, desc};
-                System.out.println ("ID:" + imageModel.getId () + ", Title:" + imageModel.getTitle () + ", Link:" + imageModel.getLinkImg () + ", Latitude:" + imageModel.getPlace ().getLat () + ", Longitude:" + imageModel.getPlace ().getLon () + ", Description:" + imageModel.getDesc () + " ");
                 PhotosData.add(imageModel);
             }
         } catch (JSONException e) {
