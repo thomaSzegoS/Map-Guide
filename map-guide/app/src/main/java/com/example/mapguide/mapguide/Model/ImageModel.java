@@ -8,7 +8,7 @@ public class ImageModel {
     public ImageModel(String link, String id, String desc, String title) {
         this.linkImg = link;
         this.id = id;
-        this.desc = desc;
+        this.desc = android.text.Html.fromHtml(desc).toString();
         this.title = title;
         this.place = new Place ();
     }
@@ -55,4 +55,6 @@ public class ImageModel {
     public void setPlace(Place place) {
         this.place = place;
     }
+
+
 }

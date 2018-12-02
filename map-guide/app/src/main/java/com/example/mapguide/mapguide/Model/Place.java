@@ -33,7 +33,10 @@ public class Place {
     }
 
     public String getLat() {
-        return lat;
+        if (this.lat==null){
+            this.lat = "1";
+        }
+        return this.lat;
     }
 
     public void setLat(String lat) {
@@ -41,7 +44,10 @@ public class Place {
     }
 
     public String getLon() {
-        return lon;
+        if (this.lon==null){
+            this.lon = "1";
+        }
+        return this.lon;
     }
 
     public void setLon(String lon) {
