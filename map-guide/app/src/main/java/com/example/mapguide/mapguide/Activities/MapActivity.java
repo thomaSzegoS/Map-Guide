@@ -36,12 +36,20 @@ public class MapActivity extends AppCompatActivity {
     private Boolean mLocationPermissionGranted = false;
     private GoogleMap gMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
+    LatLng xy;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        Bundle pos = getIntent().getExtras();
+        xy = new LatLng(Double.valueOf(pos.getString("lat")),Double.valueOf(pos.getString("lon")));
+        Log.v("Latitiude",pos.getString("lat"));
+        Log.v("Lontiutude",pos.getString("lon"));
         getLocationPermission();
+        initMap();
+
+
     }
 
     @Override
@@ -98,7 +106,8 @@ public class MapActivity extends AppCompatActivity {
                 Log.d(TAG, "onMapReady: Map is ready!");
 
                 if(mLocationPermissionGranted) {
-                    getDeviceLocation();
+
+                    moveCamera(xy,20f);
                 }
 
             }
