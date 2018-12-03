@@ -1,6 +1,7 @@
 package com.example.mapguide.mapguide.Model;
 
 
+
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.os.Bundle;
@@ -8,29 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.mapguide.mapguide.R;
 
-
-public class Place extends AppCompatActivity {
-
-     private ImageView img;
-     private TextView head, desc;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
-        img = findViewById(R.id.image);
-        head = findViewById(R.id.textViewHead);
-        desc = findViewById(R.id.textViewDesc);
-
-        img.setImageResource(getIntent().getIntExtra("img_id", 00));
-        head.setText("Text : " + getIntent().getStringExtra("text"));
-        desc.setText("Description : " + getIntent().getStringExtra("description"));
-    }
-
+public class Place {
 
     private String lat, lon, areaName;
+
 
     public Place() {
 
@@ -51,7 +33,10 @@ public class Place extends AppCompatActivity {
     }
 
     public String getLat() {
-        return lat;
+        if (this.lat==null){
+            this.lat = "1";
+        }
+        return this.lat;
     }
 
     public void setLat(String lat) {
@@ -59,12 +44,15 @@ public class Place extends AppCompatActivity {
     }
 
     public String getLon() {
-        return lon;
+        if (this.lon==null){
+            this.lon = "1";
+        }
+        return this.lon;
     }
 
     public void setLon(String lon) {
         this.lon = lon;
     }
-
-
 }
+
+
