@@ -2,6 +2,7 @@ package com.example.mapguide.mapguide.Activities;
 
 
 import android.app.ProgressDialog;
+import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.net.NetworkInfo;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -42,6 +45,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(haveNetwork())
+        {
+            ////////////////////
+            //proceed with my app functionality
+        }
+        else if(!haveNetwork())
+        {
+            ////////////////////
+            Toast.makeText(MainActivity.this, "Network connection is not available!", Toast.LENGTH_SHORT).show();
+        }
+
+
         final EditText SearchBar = (EditText) findViewById(R.id.id_SearchBar);
         Button SearchButton = (Button) findViewById(R.id.id_SearchButton);
         r.GetTop20();
@@ -55,6 +71,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private boolean haveNetwork()
+    {
+        boolean have_WIFI=false;
+        boolean have_MobileData=false;
+
+
+        ConnectivityManager connectivityManager=(ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo[] networkInfos=connectivityManager.getAllNetworkInfo();
+
+        for (NetworkInfo info:networkInfos)
+        {
+            if(info.getTypeName().equalsIgnoreCase("WIFI"))
+                if(info.isConnected())
+                    have_WIFI=true;
+            if(info.getTypeName().equalsIgnoreCase("MOBILE"))
+                if(info.isConnected())
+                    have_MobileData=true;
+        }
+        return have_MobileData || have_WIFI;
 
     }
 
