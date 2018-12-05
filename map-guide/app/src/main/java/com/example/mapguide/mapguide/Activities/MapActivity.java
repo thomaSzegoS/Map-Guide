@@ -20,6 +20,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -107,7 +108,7 @@ public class MapActivity extends AppCompatActivity {
 
                 if(mLocationPermissionGranted) {
 
-                    moveCamera(xy,20f);
+                    moveCamera(xy,20f, "Location");
                 }
 
             }
@@ -130,7 +131,7 @@ public class MapActivity extends AppCompatActivity {
                             Log.d(TAG, "onComplete: found location");
                             Location currentLocation = (Location) task.getResult();
 
-                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFAULT_ZOOM);
+                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFAULT_ZOOM, "My Location");
 
                         } else {
                             Log.d(TAG, "onComplete: current location is null");
@@ -145,10 +146,15 @@ public class MapActivity extends AppCompatActivity {
         }
     }
 
-    private void moveCamera(LatLng latLng, float zoom){
+    protected void moveCamera(LatLng latLng, float zoom, String title){
         Log.d(TAG,"moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude);
 
         gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+
+        MarkerOptions options = new MarkerOptions()
+                .position(latLng)
+                .title(title);
+        gMap.addMarker(options);
     }
 
 }
