@@ -1,6 +1,5 @@
 package com.example.mapguide.mapguide.Activities;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
@@ -12,12 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.mapguide.mapguide.R;
-import com.example.mapguide.mapguide.Services.MapServices;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
+import com.example.mapguide.mapguide.Services.MapService;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
@@ -40,7 +36,7 @@ public class TabActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MapServices services = new MapServices();
+        MapService services = new MapService();
 
         fimg = findViewById(R.id.fullscreenView);
         favBtn = findViewById(R.id.favButton);

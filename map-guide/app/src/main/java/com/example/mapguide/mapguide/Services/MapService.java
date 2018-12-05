@@ -7,7 +7,7 @@ import com.example.mapguide.mapguide.Activities.TabActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
-public class MapServices {
+public class MapService {
     /*************************Checking Api Services Availability ***********************************************/
 
     private static final String TAG = "TabActivity";

@@ -13,20 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.net.NetworkInfo;
 import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.mapguide.mapguide.Model.ImageModel;
+import com.example.mapguide.mapguide.Adapters.MyAdapter;
+import com.example.mapguide.mapguide.Model.Image;
 import com.example.mapguide.mapguide.R;
-import com.example.mapguide.mapguide.Services.FlickrServices;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.mapguide.mapguide.Services.FlickrService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private android.support.v7.widget.RecyclerView.Adapter adapter;
     private List<ListItem> listItems;
-    final FlickrServices r = new FlickrServices();
+    final FlickrService r = new FlickrService();
 
 
     @Override
@@ -56,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             ////////////////////
             Toast.makeText(MainActivity.this, "Network connection is not available!", Toast.LENGTH_SHORT).show();
         }
+
 
 
         final EditText SearchBar = (EditText) findViewById(R.id.id_SearchBar);
@@ -106,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.show();
 
         for (int i = 0; i < r.PhotosData.size(); i++) {
-            ImageModel photo = r.PhotosData.get(i);
+            Image photo = r.PhotosData.get(i);
             Log.v("lat",photo.getPlace().getLat());
             Log.v("lon",photo.getPlace().getLon());
             ListItem item = new ListItem(photo.getTitle(), photo.getDesc(), photo.getLinkImg(),photo.getPlace().getLat(),photo.getPlace().getLon());

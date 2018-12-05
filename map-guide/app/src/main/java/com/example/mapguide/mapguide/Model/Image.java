@@ -1,11 +1,11 @@
 package com.example.mapguide.mapguide.Model;
 
-public class ImageModel {
+public class Image {
 
     private String linkImg, id, desc, title;
     private Place place;
 
-    public ImageModel(String link, String id, String desc, String title) {
+    public Image(String link, String id, String desc, String title) {
         this.linkImg = link;
         this.id = id;
         this.desc = android.text.Html.fromHtml(desc).toString();
@@ -13,7 +13,7 @@ public class ImageModel {
         this.place = new Place ();
     }
 
-    public ImageModel() {
+    public Image() {
     }
 
     public String getLinkImg() {
