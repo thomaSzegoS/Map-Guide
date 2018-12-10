@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.mapguide.mapguide.Activities.ListItem;
 import com.example.mapguide.mapguide.Activities.MapActivity;
+import com.example.mapguide.mapguide.Activities.TabActivity;
 import com.example.mapguide.mapguide.R;
 import com.squareup.picasso.Picasso;
 
@@ -35,7 +36,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(parent.getContext(), MapActivity.class);
+                Intent myIntent = new Intent(parent.getContext(), TabActivity.class);
                 myIntent.putExtra("lat",getLat(parent));
                 myIntent.putExtra("lon",getLon(parent));
                 parent.getContext().startActivity(myIntent);

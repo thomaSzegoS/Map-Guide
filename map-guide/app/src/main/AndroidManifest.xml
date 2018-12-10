@@ -30,6 +30,8 @@
         <activity android:name=".Activities.MapActivity" />
         <activity android:name=".Activities.fullscreen"/>
         <activity android:name=".Activities.TabActivity"/>
+        <activity android:name=".Services.GoogleSignInActivity"/>
+
     </application>
 
 </manifest>
