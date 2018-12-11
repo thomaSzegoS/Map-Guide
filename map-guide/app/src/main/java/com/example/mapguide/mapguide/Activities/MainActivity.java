@@ -2,6 +2,7 @@ package com.example.mapguide.mapguide.Activities;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private android.support.v7.widget.RecyclerView.Adapter adapter;
     private List<ListItem> listItems;
     final FlickrService r = new FlickrService();
+    private Button button;
 
 
     @Override
@@ -36,23 +38,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(haveNetwork())
-        {
-            ////////////////////
-            //proceed with my app functionality
-        }
-        else if(!haveNetwork())
-        {
-            ////////////////////
-            Toast.makeText(MainActivity.this, "Network connection is not available!", Toast.LENGTH_SHORT).show();
-        }
-
-
-
         final EditText SearchBar = (EditText) findViewById(R.id.id_SearchBar);
         Button SearchButton = (Button) findViewById(R.id.id_SearchButton);
         r.GetTop20();
         loadRecyclerViewData();
+
+        button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNetworkStatus();
+            }
+        });
 
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,26 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private boolean haveNetwork()
-    {
-        boolean have_WIFI=false;
-        boolean have_MobileData=false;
-
-
-        ConnectivityManager connectivityManager=(ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo[] networkInfos=connectivityManager.getAllNetworkInfo();
-
-        for (NetworkInfo info:networkInfos)
-        {
-            if(info.getTypeName().equalsIgnoreCase("WIFI"))
-                if(info.isConnected())
-                    have_WIFI=true;
-            if(info.getTypeName().equalsIgnoreCase("MOBILE"))
-                if(info.isConnected())
-                    have_MobileData=true;
-        }
-        return have_MobileData || have_WIFI;
-
+    public void openNetworkStatus(){
+        Intent intent = new Intent(this, NetworkStatus.class);
+        startActivity(intent);
     }
 
     private void loadRecyclerViewData(){
