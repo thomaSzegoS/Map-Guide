@@ -1,17 +1,22 @@
 package com.example.mapguide.mapguide.Activities;
 
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.net.NetworkInfo;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.example.mapguide.mapguide.Adapters.MyAdapter;
 import com.example.mapguide.mapguide.Model.Image;
@@ -24,11 +29,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    FloatingActionButton faButton;
+    LinearLayout LLayout1;
     private static final String URL_DATA = "https://simplifiedcoding.net/demos/marvel/";
     private RecyclerView recyclerView;
     private android.support.v7.widget.RecyclerView.Adapter adapter;
     private List<ListItem> listItems;
     final FlickrService r = new FlickrService();
+    private Button button;
 
 
     @Override
@@ -36,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        faButtonfaButton = findViewById(R.id.floatingActionButton);
+        LLayout1 = findViewById(R.id.LinearLayout2);
         if(haveNetwork())
         {
             ////////////////////
@@ -48,43 +58,50 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
         final EditText SearchBar = (EditText) findViewById(R.id.id_SearchBar);
-        Button SearchButton = (Button) findViewById(R.id.id_SearchButton);
+        //Button SearchButton = (Button) findViewById(R.id.id_SearchButton);
         r.GetTop20();
         loadRecyclerViewData();
 
+        button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNetworkStatus();
+            }
+        });
+
         SearchButton.setOnClickListener(new View.OnClickListener() {
+
+     /*   SearchButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 r.GetSearch20(SearchBar.getText().toString());
                 loadRecyclerViewData();
             }
+        });*/
+
+        faButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v){
+                if(LLayout1.getVisibility() == View.GONE){
+                LLayout1.setVisibility(LLayout1.VISIBLE);}
+                else if(LLayout1.getVisibility() == View.VISIBLE) {
+                    r.GetSearch20(SearchBar.getText().toString());
+                    loadRecyclerViewData();
+                    LLayout1.setVisibility(LLayout1.GONE);
+                }
+                                        }
         });
 
 
     }
 
-    private boolean haveNetwork()
-    {
-        boolean have_WIFI=false;
-        boolean have_MobileData=false;
-
-
-        ConnectivityManager connectivityManager=(ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo[] networkInfos=connectivityManager.getAllNetworkInfo();
-
-        for (NetworkInfo info:networkInfos)
-        {
-            if(info.getTypeName().equalsIgnoreCase("WIFI"))
-                if(info.isConnected())
-                    have_WIFI=true;
-            if(info.getTypeName().equalsIgnoreCase("MOBILE"))
-                if(info.isConnected())
-                    have_MobileData=true;
-        }
-        return have_MobileData || have_WIFI;
-
+    public void openNetworkStatus(){
+        Intent intent = new Intent(this, NetworkStatus.class);
+        startActivity(intent);
     }
 
     private void loadRecyclerViewData(){
