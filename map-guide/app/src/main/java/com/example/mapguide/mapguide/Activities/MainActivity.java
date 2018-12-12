@@ -1,18 +1,22 @@
 package com.example.mapguide.mapguide.Activities;
 
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.net.NetworkInfo;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.example.mapguide.mapguide.Adapters.MyAdapter;
 import com.example.mapguide.mapguide.Model.Image;
@@ -25,6 +29,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    FloatingActionButton faButton;
+    LinearLayout LLayout1;
     private static final String URL_DATA = "https://simplifiedcoding.net/demos/marvel/";
     private RecyclerView recyclerView;
     private android.support.v7.widget.RecyclerView.Adapter adapter;
@@ -38,8 +44,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        faButtonfaButton = findViewById(R.id.floatingActionButton);
+        LLayout1 = findViewById(R.id.LinearLayout2);
+        if(haveNetwork())
+        {
+            ////////////////////
+            //proceed with my app functionality
+        }
+        else if(!haveNetwork())
+        {
+            ////////////////////
+            Toast.makeText(MainActivity.this, "Network connection is not available!", Toast.LENGTH_SHORT).show();
+        }
+
+
         final EditText SearchBar = (EditText) findViewById(R.id.id_SearchBar);
-        Button SearchButton = (Button) findViewById(R.id.id_SearchButton);
+        //Button SearchButton = (Button) findViewById(R.id.id_SearchButton);
         r.GetTop20();
         loadRecyclerViewData();
 
@@ -52,11 +72,28 @@ public class MainActivity extends AppCompatActivity {
         });
 
         SearchButton.setOnClickListener(new View.OnClickListener() {
+
+     /*   SearchButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 r.GetSearch20(SearchBar.getText().toString());
                 loadRecyclerViewData();
             }
+        });*/
+
+        faButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v){
+                if(LLayout1.getVisibility() == View.GONE){
+                LLayout1.setVisibility(LLayout1.VISIBLE);}
+                else if(LLayout1.getVisibility() == View.VISIBLE) {
+                    r.GetSearch20(SearchBar.getText().toString());
+                    loadRecyclerViewData();
+                    LLayout1.setVisibility(LLayout1.GONE);
+                }
+                                        }
         });
 
 
