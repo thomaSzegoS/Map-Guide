@@ -10,6 +10,28 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.mapguide.mapguide.Activities.MainActivity">
 
+
+
+    <TextView
+        android:id="@+id/status_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/SignOutButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Sign Out" />
+
+
+    <LinearLayout
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="match_parent"
@@ -30,6 +52,7 @@
         android:visibility="gone">
 
         <TextView
+
             android:id="@+id/textView2"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
