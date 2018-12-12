@@ -47,6 +47,21 @@
             android:inputType="textShortMessage" />
 
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Check" />
+
+        <Button
+            android:id="@+id/id_SearchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Go" />
+
+
     </LinearLayout>
 
 
