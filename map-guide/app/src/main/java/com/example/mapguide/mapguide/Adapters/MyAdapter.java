@@ -36,7 +36,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(parent.getContext(), TabActivity.class);
+                Intent myIntent = new Intent(parent.getContext(), MapActivity.class);
                 myIntent.putExtra("lat",getLat(parent));
                 myIntent.putExtra("lon",getLon(parent));
                 parent.getContext().startActivity(myIntent);
