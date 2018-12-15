@@ -1,9 +1,8 @@
 package com.example.mapguide.mapguide.Services;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.example.mapguide.mapguide.Model.ImageModel;
+import com.example.mapguide.mapguide.Model.Image;
 import com.example.mapguide.mapguide.Model.Place;
 
 import org.json.JSONArray;
@@ -19,8 +18,8 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import javax.net.ssl.HttpsURLConnection;
 
-public class FlickrServices {
-    public ArrayList<ImageModel> PhotosData;
+public class FlickrService {
+    public ArrayList<Image> PhotosData;
 
 
     public void GetSearch20(String SearchText) {
@@ -41,7 +40,7 @@ public class FlickrServices {
                 String lat = ResultObjectPhoto.get("latitude").toString();
                 String lon = ResultObjectPhoto.get("longitude").toString();
                 Place PhotoPlace = new Place(lat,lon,"");
-                ImageModel Photo = new ImageModel(link, id, desc, title);
+                Image Photo = new Image(link, id, desc, title);
                 Photo.setPlace(PhotoPlace);
                 PhotosData.add(Photo);
             }
@@ -73,7 +72,7 @@ public class FlickrServices {
                 String lat = ResultObjectPhoto.get("latitude").toString();
                 String lon = ResultObjectPhoto.get("longitude").toString();
                 Place PhotoPlace = new Place(lat,lon,"");
-                ImageModel Photo = new ImageModel(link, id, desc, title);
+                Image Photo = new Image(link, id, desc, title);
                 Photo.setPlace(PhotoPlace);
                 PhotosData.add(Photo);
             }

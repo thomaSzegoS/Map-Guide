@@ -1,22 +1,22 @@
-package com.example.mapguide.mapguide.Activities;
+package com.example.mapguide.mapguide.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mapguide.mapguide.Activities.ListItem;
+import com.example.mapguide.mapguide.Activities.MapActivity;
+import com.example.mapguide.mapguide.Activities.TabActivity;
 import com.example.mapguide.mapguide.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import static android.support.constraint.Constraints.TAG;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "162922014101",
+    "firebase_url": "https://mapguide-e0fbf.firebaseio.com",
+    "project_id": "mapguide-e0fbf",
+    "storage_bucket": "mapguide-e0fbf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162922014101:android:2be1ad56b87e0e2f",
+        "android_client_info": {
+          "package_name": "com.example.mapguide.mapguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162922014101-0p8vvr5bffsovmh59ebcccacgdd2efk9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mapguide.mapguide",
+            "certificate_hash": "c9f3448144e1d7cbdbdf9fad09979db6fc566ac6"
+          }
+        },
+        {
+          "client_id": "162922014101-r52grsmt2v0ui9sfi3f2h6crb9nr3npd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZ2crc8Sy9rFPdKCEaQx0Eb1WWeqh9ZuM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162922014101-r52grsmt2v0ui9sfi3f2h6crb9nr3npd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
