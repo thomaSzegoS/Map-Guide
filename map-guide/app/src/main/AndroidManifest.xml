@@ -32,10 +32,21 @@
         <activity android:name=".Activities.fullscreen" />
         <activity android:name=".Activities.TabActivity" />
         <activity android:name=".Services.GoogleSignInActivity" />
-        <activity android:name=".Activities.NetworkStatus"/>
+        <activity android:name=".Activities.NetworkStatus" />
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"/>
+            android:name=".Activities.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".Activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity" />
+        </activity>
+        <activity android:name=".Activities.Help"
+            android:label="Help"
+            android:parentActivityName=".Activities.MainActivity"/>
+        <activity android:name=".Activities.Settings"
+            android:label="Settings"
+            android:parentActivityName=".Activities.MainActivity"/>
     </application>
 
 </manifest>
