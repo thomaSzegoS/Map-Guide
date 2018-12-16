@@ -1,122 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.mapguide.mapguide.Activities.MainActivity">
+    >
 
-
-    <!-- Sign-In Button  -->
-    <TextView
-        android:id="@+id/status_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="" />
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/sign_in_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
-
-    <Button
-        android:id="@+id/SignOutButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Sign Out"
-        android:layout_gravity="center" />
-
-    <!-- End of Sign-In button   -->
-
-
-
-    <!-- Check network connection status  -->
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Check" />
-
-    <!-- network connection status  -->
-
-
-    <!-- Search - floating action button -->
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/searchBtn"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:clickable="true"
-        app:backgroundTint="@android:color/darker_gray"
-        app:srcCompat="@drawable/ic_search_black_24dp" />
-
-    <!-- End of Search - floating action button -->
-
-    <!-- Search bar  -->
-    <LinearLayout
-        android:id="@+id/LinearLayout2"
-        android:layout_width="328dp"
-        android:layout_height="87dp"
-        android:layout_gravity="start"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone"
-        android:layout_alignParentBottom="true">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.example.mapguide.mapguide.Activities.MainActivity">
 
+
+        <!-- Sign-In Button  -->
         <TextView
-            android:id="@+id/textViewSearch"
-            android:layout_width="80dp"
+            android:id="@+id/status_textview"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Search:"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/textBar"
-            style="@style/Widget.AppCompat.AutoCompleteTextView"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
             android:layout_gravity="center"
-            android:inputType="textShortMessage" />
+            android:text="" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/SignOutButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Sign Out"
+            android:layout_gravity="center" />
+
+        <!-- End of Sign-In button   -->
+
+
+
+        <!-- Check network connection status  -->
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Check" />
+
+        <!-- network connection status  -->
+
+
+        <!-- Search - floating action button -->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/searchBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:clickable="true"
+            app:backgroundTint="@android:color/darker_gray"
+            app:srcCompat="@drawable/ic_search_black_24dp" />
+
+        <!-- End of Search - floating action button -->
+
+        <!-- Search bar  -->
+        <LinearLayout
+            android:id="@+id/LinearLayout2"
+            android:layout_width="328dp"
+            android:layout_height="87dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/textViewSearch"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Search:"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/textBar"
+                style="@style/Widget.AppCompat.AutoCompleteTextView"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_gravity="center"
+                android:inputType="textShortMessage" />
+
+        </LinearLayout>
+
+        <!-- End of Search bar  -->
+
+
+
+        <!--
+            <Button
+            android:id="@+id/id_SearchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Go" />
+
+
+
+          -->
+
+
+
+        <!-- Recycler view  -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- End of Recycler view  -->
+
 
     </LinearLayout>
 
-    <!-- End of Search bar  -->
-
-
-
-    <!--
-        <Button
-        android:id="@+id/id_SearchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Go" />
-
-
-
-      -->
-
-
-
-    <!-- Recycler view  -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <FrameLayout
+        android:id="@+id/progressBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:visibility="visible">
 
-    <!-- End of Recycler view  -->
+        <com.budiyev.android.circularprogressbar.CircularProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:animateProgress="true"
+            app:backgroundStrokeColor="@color/colorAccent"
+            app:backgroundStrokeWidth="2dp"
+            app:drawBackgroundStroke="false"
+            app:foregroundStrokeCap="butt"
+            app:foregroundStrokeColor="@color/colorPrimary"
+            app:foregroundStrokeWidth="3dp"
+            app:indeterminate="true"
+            app:indeterminateMinimumAngle="45"
+            app:indeterminateRotationAnimationDuration="1200"
+            app:indeterminateSweepAnimationDuration="600"
+            app:maximum="100"
+            app:progress="50"
+            app:progressAnimationDuration="100"
+            app:startAngle="270" />
+    </FrameLayout>
+</RelativeLayout>
 
 
-</LinearLayout>
 
 
