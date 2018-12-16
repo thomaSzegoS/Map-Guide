@@ -3,6 +3,7 @@ package com.example.mapguide.mapguide.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -54,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_main);
+
+
+
+
 
         button = (Button) findViewById (R.id.button);
         searchBtn = findViewById (R.id.searchBtn);
@@ -174,28 +179,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId ();
-        switch (id) {
-            //όταν κάνεις κλικ σε μια μπάρα η μπάρα χειρισμού "action bar"
-            //αυτόματα η μπάρα θα παραμήνει στη θέση της
-            //εφόσον ορίσαμε συγκεκριμένα σαν parent activity "AndroidManifest.xml"
-            case R.id.menu_red:
-                if (item.isChecked ()) item.setChecked (false);
-                else item.setChecked (false);
-                getActionBar ().setBackgroundDrawable (new ColorDrawable (Color.parseColor ("#F44336")));
-                return true;
 
-            case R.id.menu_blue:
-                if (item.isChecked ()) item.setChecked (false);
-                else item.setChecked (false);
-                getActionBar ().setBackgroundDrawable (new ColorDrawable (Color.parseColor ("#03A9F4")));
-                return true;
-
-            case R.id.menu_green:
-                if (item.isChecked ()) item.setChecked (false);
-                else item.setChecked (false);
-                getActionBar ().setBackgroundDrawable (new ColorDrawable (Color.parseColor ("#4CAF50")));
     public boolean onOptionsItemSelected(MenuItem item)
     {
         switch(item.getItemId())
