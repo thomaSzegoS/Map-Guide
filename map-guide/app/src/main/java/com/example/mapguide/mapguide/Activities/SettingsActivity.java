@@ -1,4 +1,4 @@
-package com.example.mapguide.mapguide;
+package com.example.mapguide.mapguide.Activities;
 
 import android.app.ActionBar;
 import android.os.Bundle;
