@@ -36,11 +36,10 @@
         <activity
             android:name=".Activities.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".Activities.MainActivity">
+            android:parentActivityName=".Activities.MainActivity"/>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
-        </activity>
         <activity android:name=".Activities.Help"
             android:label="Help"
             android:parentActivityName=".Activities.MainActivity"/>
