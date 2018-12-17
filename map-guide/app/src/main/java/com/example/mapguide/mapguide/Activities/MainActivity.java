@@ -22,6 +22,9 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.example.mapguide.mapguide.Activities.MainMenuActivities.Help;
+import com.example.mapguide.mapguide.Activities.MainMenuActivities.NetworkStatus;
+import com.example.mapguide.mapguide.Activities.MainMenuActivities.Settings;
 import com.example.mapguide.mapguide.Adapters.MyAdapter;
 import com.example.mapguide.mapguide.Model.Image;
 import com.example.mapguide.mapguide.R;
@@ -189,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
             //όταν κάνεις κλικ σε μια μπάρα η μπάρα χειρισμού "action bar"
             //αυτόματα η μπάρα θα παραμήνει στη θέση της
             //εφόσον ορίσαμε συγκεκριμένα σαν parent activity "AndroidManifest.xml"
-            case R.id.menu_red:
+         /*   case R.id.menu_red:
                 if (item.isChecked()) item.setChecked(false);
                 else item.setChecked(false);
                 getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F44336")));
@@ -206,7 +209,8 @@ public class MainActivity extends AppCompatActivity {
                 else item.setChecked(false);
                 getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4CAF50")));
                 return true;
-            
+
+            */
             case R.id.settings:
                 Intent intentSettings = new Intent(this, Settings.class);
                 this.startActivity(intentSettings);

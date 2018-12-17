@@ -29,10 +29,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MapActivity" />
-        <activity android:name=".Activities.fullscreen" />
+        <activity android:name=".Activities.Fullscreen" />
         <activity android:name=".Activities.TabActivity" />
         <activity android:name=".Services.GoogleSignInActivity" />
-        <activity android:name=".Activities.NetworkStatus" />
+        <activity android:name=".Activities.MainMenuActivities.NetworkStatus" />
         <activity
             android:name=".Activities.SettingsActivity"
             android:label="@string/title_activity_settings"
@@ -40,10 +40,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
-        <activity android:name=".Activities.Help"
+        <activity android:name=".Activities.MainMenuActivities.Help"
             android:label="Help"
             android:parentActivityName=".Activities.MainActivity"/>
-        <activity android:name=".Activities.Settings"
+        <activity android:name=".Activities.MainMenuActivities.Settings"
             android:label="Settings"
             android:parentActivityName=".Activities.MainActivity"/>
     </application>

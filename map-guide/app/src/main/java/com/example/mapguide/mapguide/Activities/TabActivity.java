@@ -87,7 +87,7 @@ public class TabActivity extends AppCompatActivity {
     }
 
     public void openfullscreen(){
-        Intent intent = new Intent(this, fullscreen.class);
+        Intent intent = new Intent(this, Fullscreen.class);
         startActivity(intent);
     }
 

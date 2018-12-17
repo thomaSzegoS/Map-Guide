@@ -74,7 +74,29 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
+
+        /*** Settin Click Listeners  ***/
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
+
+
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+            }
+        });
+
+        /*** End of Click Listeners  ***/
+
+
     }
+
+
 
 
     @Override
@@ -105,7 +127,16 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
     }
 
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+
+    @Override
+    public void onClick(View view) {
+
+    }
 
 
     private void signIn() {
@@ -138,15 +169,7 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
                 });
     }
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
-    }
-
-    @Override
-    public void onClick(View view) {
-
-    }
 }
 
 
