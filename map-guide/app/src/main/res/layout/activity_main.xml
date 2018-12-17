@@ -64,7 +64,8 @@
             android:layout_gravity="bottom|end"
             android:clickable="true"
             app:backgroundTint="@android:color/darker_gray"
-            app:srcCompat="@drawable/ic_search_black_24dp" />
+            app:srcCompat="@drawable/ic_search_black_24dp"
+            tools:ignore="VectorDrawableCompat" />
 
         <!-- End of Search - floating action button -->
 

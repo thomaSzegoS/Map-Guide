@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 else item.setChecked(false);
                 getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4CAF50")));
                 return true;
-
+            
             case R.id.settings:
                 Intent intentSettings = new Intent(this, Settings.class);
                 this.startActivity(intentSettings);
