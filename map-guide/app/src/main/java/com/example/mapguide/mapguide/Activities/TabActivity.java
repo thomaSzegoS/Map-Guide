@@ -77,7 +77,6 @@ public class TabActivity extends AppCompatActivity {
                                       }
                                   }
         );
-        /*****************************me empodizei na to trexw****************/
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
