@@ -2,6 +2,9 @@ package com.example.mapguide.mapguide.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,6 +20,7 @@ import com.example.mapguide.mapguide.Activities.TabActivity;
 import com.example.mapguide.mapguide.R;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -29,35 +33,36 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         this.listItems = listItems;
         this.context = context;
     }
+    private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
+            Intent myIntent = new Intent(v.getContext(), TabActivity.class);
+            myIntent.putExtra("lat",getLat(v));
+            myIntent.putExtra("lon",getLon(v));
+            myIntent.putExtra("image",getImage(v));//TODO: na perasw to url oxi tin eikona se string
+            myIntent.putExtra("title",getTitle(v));
+            myIntent.putExtra("description",getDescription(v));
+            v.getContext().startActivity(myIntent);
+
+        }
+    };
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(com.example.mapguide.mapguide.R.layout.list_item, parent, false);
-        v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(parent.getContext(), TabActivity.class);
-                myIntent.putExtra("lat",getLat(parent));
-                myIntent.putExtra("lon",getLon(parent));
-                //myIntent.putExtra("image", String.valueOf(getImage(parent)));//TODO: na perasw to url oxi tin eikona se string
-                myIntent.putExtra("title",getTitle(parent));
-                myIntent.putExtra("description",getDescription(parent));
-                parent.getContext().startActivity(myIntent);
-                Log.d(TAG, "put intents: ");
-            }
-        });
+        v.setOnClickListener(mOnClickListener);
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-      ListItem listItem = listItems.get(position);
+        ListItem listItem = listItems.get(position);
 
-      holder.textViewHead.setText(listItem.getHead());
-      holder.textViewDesc.setText(listItem.getDesc());
-      holder.Lat.setText(listItem.getLat().toString());
-      holder.Lon.setText(listItem.getLon().toString());
+        holder.textViewHead.setText(listItem.getHead());
+        holder.textViewDesc.setText(listItem.getDesc());
+        holder.Lat.setText(listItem.getLat().toString());
+        holder.Lon.setText(listItem.getLon().toString());
         Picasso.get()
                 .load(listItem.getImageUrl())
                 .into((holder.imageView));
@@ -70,7 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     public String getLat(View itemView) {
-         TextView Lat = (TextView) itemView.findViewById(R.id.id_lat);
+        TextView Lat = (TextView) itemView.findViewById(R.id.id_lat);
         return Lat.getText().toString();
     }
 
@@ -79,9 +84,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return Lon.getText().toString();
     }
 
-    public ImageView getImage(View itemView) {
-        ImageView image = (ImageView) itemView.findViewById(R.id.image);
-        return image;
+    public byte[] getImage(View itemView) {
+        ImageView image = (ImageView) itemView.findViewById(R.id.imageView);
+        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+        byte [] arr=baos.toByteArray();
+        return arr;
     }
 
     public String getTitle(View itemView) {

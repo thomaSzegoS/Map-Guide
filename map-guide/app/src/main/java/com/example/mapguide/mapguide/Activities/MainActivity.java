@@ -21,6 +21,7 @@ import android.text.Editable;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.Help;
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.NetworkStatus;
@@ -268,6 +269,7 @@ public class MainActivity extends AppCompatActivity {
             ListItem item = new ListItem(photo.getTitle(), photo.getDesc(), photo.getLinkImg(), photo.getPlace().getLat(), photo.getPlace().getLon());
             listItems.add(item);
         }
+
         adapter = new MyAdapter(listItems, getApplicationContext());
         recyclerView.setAdapter(adapter);
         progressDialog.dismiss();
