@@ -24,7 +24,7 @@ import java.util.List;
 public class TabActivity extends AppCompatActivity {
 
     Button favBtn;
-    ImageView img,fimg;
+    ImageView img;
     TextView tx_title, tx_location, tx_description;
     String lat, lon;
 
@@ -48,7 +48,7 @@ public class TabActivity extends AppCompatActivity {
 
         MapService services = new MapService();
 
-        fimg = findViewById(R.id.fullscreenView);
+
         favBtn = findViewById(R.id.favButton);
         img = findViewById(R.id.image);
         tx_title = findViewById(R.id.textTitle);
@@ -78,12 +78,12 @@ public class TabActivity extends AppCompatActivity {
                                   }
         );
         /*****************************me empodizei na to trexw****************/
-        /*fimg.setOnClickListener(new View.OnClickListener() {
+        img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openfullscreen();
             }
-        });*/
+        });
     }
 
     public void openfullscreen(){
