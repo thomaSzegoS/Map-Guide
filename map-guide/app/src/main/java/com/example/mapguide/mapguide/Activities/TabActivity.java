@@ -1,6 +1,8 @@
 package com.example.mapguide.mapguide.Activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
@@ -10,12 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mapguide.mapguide.R;
 import com.example.mapguide.mapguide.Services.MapService;
 import com.google.android.gms.maps.model.LatLng;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,8 +27,9 @@ import java.util.List;
 
 public class TabActivity extends AppCompatActivity {
 
-    Button favBtn;
+    ImageButton favBtn;
     ImageView img,fimg;
+
     TextView tx_title, tx_location, tx_description;
     String lat, lon;
 
@@ -48,7 +53,7 @@ public class TabActivity extends AppCompatActivity {
 
         MapService services = new MapService();
 
-        fimg = findViewById(R.id.fullscreenView);
+
         favBtn = findViewById(R.id.favButton);
         img = findViewById(R.id.image);
         tx_title = findViewById(R.id.textTitle);
@@ -77,13 +82,12 @@ public class TabActivity extends AppCompatActivity {
                                       }
                                   }
         );
-        /*****************************me empodizei na to trexw****************/
-        /*fimg.setOnClickListener(new View.OnClickListener() {
+        img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openfullscreen();
             }
-        });*/
+        });
     }
 
     public void openfullscreen(){
@@ -92,7 +96,7 @@ public class TabActivity extends AppCompatActivity {
     }
 
     private void loadMapActivity() {
-        FloatingActionButton btnMap =  findViewById(R.id.btnMap);
+        ImageButton btnMap =  findViewById(R.id.btnMap);
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,13 +115,13 @@ public class TabActivity extends AppCompatActivity {
 
              lat = getIntent().getStringExtra("lat");
             lon = getIntent().getStringExtra("lon");
-            //String image = getIntent().getStringExtra("image");
+            byte[] image = getIntent().getByteArrayExtra("image");
             String title = getIntent().getStringExtra("title");
             String description = getIntent().getStringExtra("description");
             Log.d(TAG, "getIncomingIntents: image title " + title);
+            Log.d(TAG, "getIncomingIntents: image url " + image);
 
-
-            //setImage(image);
+            setImage(image);
 
             setTitle(title);
 
@@ -131,6 +135,14 @@ public class TabActivity extends AppCompatActivity {
         //set image to imageView
 
     }*/
+
+   private void setImage(byte[] b){
+       ImageView ivBasicImage = (ImageView) findViewById(R.id.imageVIew);
+       Bitmap bmp = BitmapFactory.decodeByteArray(b, 0, b.length);
+       ivBasicImage.setImageBitmap(bmp);
+
+    }
+
    private void setTitle(String title){
        TextView textViewTitle = findViewById(R.id.textTitle);
        textViewTitle.setText(title);

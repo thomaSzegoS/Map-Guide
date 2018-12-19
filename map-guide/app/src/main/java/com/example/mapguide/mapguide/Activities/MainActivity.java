@@ -21,6 +21,7 @@ import android.text.Editable;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.Help;
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.NetworkStatus;
@@ -86,6 +87,25 @@ public class MainActivity extends AppCompatActivity {
                     .setAnimationEnabled(true)
                     .show();
         }
+
+
+        /* Needed code for new UI
+
+
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+        RecyclerView recyclerView =findViewById(R.id.rv_list);
+        List<item> mlist = new ArrayList<>();
+        mlist.add(new item(R.drawable.ic_action_name,"Cities",2500));
+
+        Adapter adapter = new Adapter( this,mlist);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+         */
+
+
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -249,6 +269,7 @@ public class MainActivity extends AppCompatActivity {
             ListItem item = new ListItem(photo.getTitle(), photo.getDesc(), photo.getLinkImg(), photo.getPlace().getLat(), photo.getPlace().getLon());
             listItems.add(item);
         }
+
         adapter = new MyAdapter(listItems, getApplicationContext());
         recyclerView.setAdapter(adapter);
         progressDialog.dismiss();

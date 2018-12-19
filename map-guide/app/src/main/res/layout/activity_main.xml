@@ -7,7 +7,6 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.mapguide.mapguide.Activities.MainActivity">
-    >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -111,9 +110,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Go" />
-
-
-
           -->
 
 
@@ -158,7 +154,4 @@
             app:startAngle="270" />
     </FrameLayout>
 </RelativeLayout>
-
-
-
 
