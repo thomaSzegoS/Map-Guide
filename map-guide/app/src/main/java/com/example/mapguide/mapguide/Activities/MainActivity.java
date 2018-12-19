@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private NetworkAvailability network;
     private FrameLayout progressBar;
     private PrettyDialog dialog;
+
     private SignInButton signInButton;
     private Button signOutButton;
     TextView statusTextView;
@@ -76,23 +77,33 @@ public class MainActivity extends AppCompatActivity {
         network = new NetworkAvailability(this);
 
 
-        /** Reacting with GoogleSignInActivity()  **/
+
+
+
+        /****** Reacting with GoogleSignInActivity()  ******/
         statusTextView = (TextView) findViewById(R.id.status_textview);
 
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
-        //signInButton.setOnClickListener(this.signInButton);
-
-        signOutButton = (Button) findViewById(R.id.SignOutButton);
-        //signOutButton.setOnClickListener((View.OnClickListener) signOutButton);
-
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                gsi = new GoogleSignInActivity();
-
+            public void onClick(View view) {
+                gsi.signIn();
+                statusTextView.setText(gsi.getAcctStatus());
             }
         });
-        /** ************************************ **/
+
+        signOutButton = (Button) findViewById(R.id.SignOutButton);
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gsi.signOut();
+                statusTextView.setText(gsi.getAcctStatus());
+            }
+        });
+        /************************************************/
+
+
+
 
         if (network.isNetworkWorks()) {
             progressBar.setVisibility(View.GONE);
