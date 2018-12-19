@@ -21,7 +21,7 @@ import android.text.Editable;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-
+import android.widget.TextView;
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.Help;
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.NetworkStatus;
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.Settings;
@@ -29,7 +29,9 @@ import com.example.mapguide.mapguide.Adapters.MyAdapter;
 import com.example.mapguide.mapguide.Model.Image;
 import com.example.mapguide.mapguide.R;
 import com.example.mapguide.mapguide.Services.FlickrService;
+import com.example.mapguide.mapguide.Services.GoogleSignInActivity;
 import com.example.mapguide.mapguide.Services.NetworkAvailability;
+import com.google.android.gms.common.SignInButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
     private NetworkAvailability network;
     private FrameLayout progressBar;
     private PrettyDialog dialog;
+    private SignInButton signInButton;
+    private Button signOutButton;
+    TextView statusTextView;
+
+    private GoogleSignInActivity gsi;
 
 
     @Override
@@ -67,6 +74,26 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar);
         network = new NetworkAvailability(this);
+
+
+        /** Reacting with GoogleSignInActivity()  **/
+        statusTextView = (TextView) findViewById(R.id.status_textview);
+
+        signInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        //signInButton.setOnClickListener(this.signInButton);
+
+        signOutButton = (Button) findViewById(R.id.SignOutButton);
+        //signOutButton.setOnClickListener((View.OnClickListener) signOutButton);
+
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gsi = new GoogleSignInActivity();
+
+            }
+        });
+        /** ************************************ **/
+
         if (network.isNetworkWorks()) {
             progressBar.setVisibility(View.GONE);
             r.GetTop20();

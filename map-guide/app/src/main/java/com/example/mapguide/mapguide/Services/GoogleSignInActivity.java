@@ -34,11 +34,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import static com.google.android.gms.auth.api.Auth.GOOGLE_SIGN_IN_API;
 
 
-public class GoogleSignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+public class GoogleSignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-    SignInButton signInButton;
-    Button signOutButton;
-    TextView statusTextView;
     GoogleApiClient mGoogleApiClient;
     GoogleSignInClient mGoogleSignInClient;
 
@@ -63,40 +60,7 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
                 .enableAutoManage(this,this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-
-        statusTextView = (TextView) findViewById(R.id.status_textview);
-        signInButton = (SignInButton) findViewById(R.id.sign_in_button);
-        signInButton.setOnClickListener(this.signInButton);
-
-        signOutButton = (Button) findViewById(R.id.SignOutButton);
-        signOutButton.setOnClickListener((View.OnClickListener) signOutButton);
-
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-
-
-        /*** Settin Click Listeners  ***/
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
-
-
-        signOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-            }
-        });
-
-        /*** End of Click Listeners  ***/
-
-
     }
-
-
 
 
     @Override
@@ -133,13 +97,7 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
     }
 
 
-    @Override
-    public void onClick(View view) {
-
-    }
-
-
-    private void signIn() {
+    public void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
