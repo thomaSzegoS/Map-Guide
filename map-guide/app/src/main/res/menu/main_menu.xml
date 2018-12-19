@@ -15,25 +15,5 @@
         android:title="Help"
         app:showAsAction="never"
         />
-    <group android:checkableBehavior="single">
 
-
-        <item
-            android:id="@+id/menu_red"
-            android:orderInCategory="1"
-            app:showAsAction="never"
-            android:title="@string/red_string"/>
-        <item
-            android:id="@+id/menu_blue"
-            android:orderInCategory="2"
-            app:showAsAction="never"
-            android:title="@string/blue_string"/>
-        <item
-            android:id="@+id/menu_green"
-            android:orderInCategory="3"
-            app:showAsAction="never"
-            android:title="Green"/>
-
-
-    </group>
 </menu>

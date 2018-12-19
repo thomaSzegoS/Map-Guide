@@ -1,4 +1,4 @@
-package com.example.mapguide.mapguide.Activities;
+package com.example.mapguide.mapguide.Activities.MainMenuActivities;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
