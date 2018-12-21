@@ -28,41 +28,40 @@ import java.util.List;
 public class TabActivity extends AppCompatActivity {
 
     ImageButton favBtn;
-    ImageView img,fimg;
+    ImageView img, fimg;
 
     TextView tx_title, tx_location, tx_description;
     String lat, lon;
 
     private static final String TAG = "TabActivity";
-    MapActivity mvCam = new MapActivity();
+    MapActivity mvCam = new MapActivity ();
     private static final float DEFAULT_ZOOM = 15f;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab);
-        Log.d(TAG, "onCreate: get incoming intents");
+        super.onCreate (savedInstanceState);
+        setContentView (R.layout.activity_tab);
+        Log.d (TAG, "onCreate: get incoming intents");
 
 
         //get intents
-        getIncomingIntents();
+        getIncomingIntents ();
 
 
+        MapService services = new MapService ();
 
-        MapService services = new MapService();
 
-
-        favBtn = findViewById(R.id.favButton);
-        img = findViewById(R.id.image);
-        tx_title = findViewById(R.id.textTitle);
-        tx_location = findViewById(R.id.textLocation);
-        tx_description = findViewById(R.id.textDesc);
+        favBtn = findViewById (R.id.favButton);
+        img = findViewById (R.id.imageVIew);
+        tx_title = findViewById (R.id.textTitle);
+        tx_location = findViewById (R.id.textLocation);
+        tx_description = findViewById (R.id.textDesc);
 
         /*************se auto to shmeio me bgazei problhma******************/
         //fimg.setImageResource(getIntent().getIntExtra("img_id",00));
-        //img.setImageResource(getIntent().getIntExtra("img_id",00));
+        img.setImageResource(getIntent().getIntExtra("img_id",00));
+        //img.setImageDrawable (getResources ().getDrawable (R.drawable.ic_action_wifi));  gia logus debugging
         /*******************************************************************/
 
         /*******************************de xreiastikan gia auta pou ekana***/
@@ -73,131 +72,118 @@ public class TabActivity extends AppCompatActivity {
 
         /************problhma sthn if*****************************************/
         //if (services.isServicesOK()) {
-            loadMapActivity();
+        loadMapActivity ();
         //}
-        favBtn.setOnClickListener(new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View v){
-                                          favBtn.setBackgroundColor(Color.RED);
-                                      }
-                                  }
+        favBtn.setOnClickListener (new View.OnClickListener () {
+                                       @Override
+                                       public void onClick(View v) {
+                                           favBtn.setBackgroundColor (Color.RED);
+                                       }
+                                   }
         );
-        img.setOnClickListener(new View.OnClickListener() {
+        img.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                openfullscreen();
+                openfullscreen ();
             }
         });
     }
 
-    public void openfullscreen(){
-        Intent intent = new Intent(this, Fullscreen.class);
-        startActivity(intent);
+    public void openfullscreen() {
+        Intent intent = new Intent (this, Fullscreen.class);
+        startActivity (intent);
     }
 
     private void loadMapActivity() {
-        ImageButton btnMap =  findViewById(R.id.btnMap);
-        btnMap.setOnClickListener(new View.OnClickListener() {
+        ImageButton btnMap = findViewById (R.id.btnMap);
+        btnMap.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TabActivity.this, MapActivity.class);
-                intent.putExtra("lat",lat);
-                intent.putExtra("lon",lon);
-                startActivity(intent);
+                Intent intent = new Intent (TabActivity.this, MapActivity.class);
+                intent.putExtra ("lat", lat);
+                intent.putExtra ("lon", lon);
+                startActivity (intent);
             }
         });
     }
 
-    private void getIncomingIntents(){
-        Log.d(TAG, "getIncomingIntents: checking for incoming intents");
-        if(getIntent().hasExtra("lat") && getIntent().hasExtra("lon") /*&& getIntent().hasExtra("image")*/ && getIntent().hasExtra("title") && getIntent().hasExtra("description")) {
-            Log.d(TAG, "getIncomingIntents: found intents");
+    private void getIncomingIntents() {
+        Log.d (TAG, "getIncomingIntents: checking for incoming intents");
+        if (getIntent ().hasExtra ("lat") && getIntent ().hasExtra ("lon") /*&& getIntent().hasExtra("image")*/ && getIntent ().hasExtra ("title") && getIntent ().hasExtra ("description")) {
+            Log.d (TAG, "getIncomingIntents: found intents");
 
-             lat = getIntent().getStringExtra("lat");
-            lon = getIntent().getStringExtra("lon");
-            byte[] image = getIntent().getByteArrayExtra("image");
-            String title = getIntent().getStringExtra("title");
-            String description = getIntent().getStringExtra("description");
-            Log.d(TAG, "getIncomingIntents: image title " + title);
-            Log.d(TAG, "getIncomingIntents: image url " + image);
+            lat = getIntent ().getStringExtra ("lat");
+            lon = getIntent ().getStringExtra ("lon");
+            byte[] image = getIntent ().getByteArrayExtra ("image");
+            String title = getIntent ().getStringExtra ("title");
+            String description = getIntent ().getStringExtra ("description");
+            Log.d (TAG, "getIncomingIntents: image title " + title);
+            Log.d (TAG, "getIncomingIntents: image url " + image);
 
-            setImage(image);
+            setImage (image);
 
-            setTitle(title);
+            setTitle (title);
 
-            setLocation(lat, lon);
-            setDescription(description);
-            Log.d(TAG, "getIncomingIntents: DONE");
+            setLocation (lat, lon);
+            setDescription (description);
+            Log.d (TAG, "getIncomingIntents: DONE");
         }
     }
-/*******************tha asxolithw me to image argotera*********************/
+
+    /*******************tha asxolithw me to image argotera*********************/
    /* private void setImage(String image){
         //set image to imageView
 
     }*/
-
-   private void setImage(byte[] b){
-       ImageView ivBasicImage = (ImageView) findViewById(R.id.imageVIew);
-       Bitmap bmp = BitmapFactory.decodeByteArray(b, 0, b.length);
-       ivBasicImage.setImageBitmap(bmp);
+    private void setImage(byte[] b) {
+        ImageView ivBasicImage = (ImageView) findViewById (R.id.imageVIew);
+        Bitmap bmp = BitmapFactory.decodeByteArray (b, 0, b.length);
+        ivBasicImage.setImageBitmap (bmp);
 
     }
 
-   private void setTitle(String title){
-       TextView textViewTitle = findViewById(R.id.textTitle);
-       textViewTitle.setText(title);
-       Log.d(TAG, "setTitle: after setText");
-   }
+    private void setTitle(String title) {
+        TextView textViewTitle = findViewById (R.id.textTitle);
+        textViewTitle.setText (title);
+        Log.d (TAG, "setTitle: after setText");
+    }
 
 
-    private void setLocation(String lat, String lon){
-        TextView location = findViewById(R.id.textLocation);
+    private void setLocation(String lat, String lon) {
+        TextView location = findViewById (R.id.textLocation);
         String latlon = lat + "," + lon;
 
-        location.setText(latlon);
+        location.setText (latlon);
     }
 
-    private void setDescription(String description){
-        TextView textViewDescription = findViewById(R.id.textDesc);
-        if(description.isEmpty()) description="Description not found";
-        textViewDescription.setText(description);
+    private void setDescription(String description) {
+        TextView textViewDescription = findViewById (R.id.textDesc);
+        if (description.isEmpty ()) description = "Description not found";
+        textViewDescription.setText (description);
     }
 
-    private void geoLocate () {
-        Log.d(TAG, "geoLocate: geolocation");
+    private void geoLocate() {
+        Log.d (TAG, "geoLocate: geolocation");
 
-        String searchString = tx_location.getText().toString();
+        String searchString = tx_location.getText ().toString ();
 
-        Geocoder geocoder = new Geocoder(TabActivity.this);
-        List<Address> list = new ArrayList<>();
+        Geocoder geocoder = new Geocoder (TabActivity.this);
+        List<Address> list = new ArrayList<> ();
 
-        try{
-            list = geocoder.getFromLocationName(searchString, 1);
-        }catch (IOException e){
-            Log.e(TAG, "geoLocate:IOException: " + e.getMessage() );
+        try {
+            list = geocoder.getFromLocationName (searchString, 1);
+        } catch (IOException e) {
+            Log.e (TAG, "geoLocate:IOException: " + e.getMessage ());
         }
 
-        if(list.size() > 0){
-            Address address = list.get(0);
+        if (list.size () > 0) {
+            Address address = list.get (0);
 
-            Log.d(TAG, "geoLocate: found a location: " +address.toString());
+            Log.d (TAG, "geoLocate: found a location: " + address.toString ());
 
-            mvCam.moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM, address.getAddressLine(0));
+            mvCam.moveCamera (new LatLng (address.getLatitude (), address.getLongitude ()), DEFAULT_ZOOM, address.getAddressLine (0));
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
