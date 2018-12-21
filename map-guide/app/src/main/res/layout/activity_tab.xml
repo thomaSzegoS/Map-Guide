@@ -19,10 +19,6 @@
             android:id="@+id/imageVIew"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentTop="false"
-            android:layout_marginStart="0dp"
             android:layout_weight="0"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher" />
@@ -85,7 +81,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="0"
                 android:background="@color/common_google_signin_btn_text_dark_disabled"
-                app:srcCompat="@drawable/ic_favorite_black_24dp" />
+                android:src="@drawable/ic_favorite_black_24dp" />
 
         </LinearLayout>
 
