@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                gsi = new GoogleSignInActivity();
                 gsi.signIn();
                 statusTextView.setText(gsi.getAcctStatus());
             }
