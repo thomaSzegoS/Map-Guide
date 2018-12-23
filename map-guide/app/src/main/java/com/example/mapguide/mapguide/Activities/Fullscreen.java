@@ -1,9 +1,9 @@
 package com.example.mapguide.mapguide.Activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
 import com.example.mapguide.mapguide.R;
-import android.widget.ImageView;
 import com.github.chrisbanes.photoview.PhotoView;
 
 public class Fullscreen extends AppCompatActivity {
