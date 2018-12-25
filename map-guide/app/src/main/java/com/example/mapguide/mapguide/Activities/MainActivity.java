@@ -3,13 +3,12 @@ package com.example.mapguide.mapguide.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
@@ -17,7 +16,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.text.Editable;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -125,6 +123,25 @@ public class MainActivity extends AppCompatActivity {
                     .setAnimationEnabled(true)
                     .show();
         }
+
+
+        /* Needed code for new UI
+
+
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+        RecyclerView recyclerView =findViewById(R.id.rv_list);
+        List<item> mlist = new ArrayList<>();
+        mlist.add(new item(R.drawable.ic_action_name,"Cities",2500));
+
+        Adapter adapter = new Adapter( this,mlist);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+         */
+
+
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -288,6 +305,7 @@ public class MainActivity extends AppCompatActivity {
             ListItem item = new ListItem(photo.getTitle(), photo.getDesc(), photo.getLinkImg(), photo.getPlace().getLat(), photo.getPlace().getLon());
             listItems.add(item);
         }
+
         adapter = new MyAdapter(listItems, getApplicationContext());
         recyclerView.setAdapter(adapter);
         progressDialog.dismiss();
