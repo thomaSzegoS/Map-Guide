@@ -35,11 +35,7 @@
         <activity android:name=".Activities.TabActivity" />
         <activity android:name=".Services.GoogleSignInActivity" />
         <activity android:name=".Activities.MainMenuActivities.NetworkStatus" />
-        <activity
-            android:name=".Activities.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".Activities.MainActivity"/>
-            <meta-data
+        <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         <activity android:name=".Activities.MainMenuActivities.Help"
