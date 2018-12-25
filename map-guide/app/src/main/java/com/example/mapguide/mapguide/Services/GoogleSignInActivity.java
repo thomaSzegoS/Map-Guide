@@ -65,6 +65,16 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
                 .enableAutoManage(this,this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+
+    }
+
+
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        // An unresolvable error has occurred and Google APIs (including Sign-In)
+        // will not be available.
+        Log.d(TAG, "onConnectionResult: " + connectionResult);
     }
 
 
@@ -83,9 +93,16 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            handleSignInResult(result);
-
+            Task<GoogleSignInAccount> task =
+                    GoogleSignIn.getSignedInAccountFromIntent(data);
+            if (task.isSuccessful()) {
+                // Sign in succeeded, proceed with account
+                GoogleSignInAccount acct = task.getResult();
+            } else {
+                // Sign in failed, handle failure and update UI
+                // ...
+            }
+        }
 
            /* Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -96,15 +113,6 @@ public class GoogleSignInActivity extends AppCompatActivity implements GoogleApi
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
             }*/
-        }
-    }
-
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        // An unresolvable error has occurred and Google APIs (including Sign-In)
-        // will not be available.
-        Log.d(TAG, "onConnectionResult: " + connectionResult);
     }
 
 
