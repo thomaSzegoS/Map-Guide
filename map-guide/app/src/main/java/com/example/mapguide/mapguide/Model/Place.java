@@ -1,6 +1,14 @@
 package com.example.mapguide.mapguide.Model;
 
 
+
+import android.widget.TextView;
+import android.widget.ImageView;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.example.mapguide.mapguide.R;
+
 public class Place {
 
     private String lat, lon, areaName;

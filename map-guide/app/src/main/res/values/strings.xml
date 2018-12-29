@@ -13,7 +13,6 @@
     <string name="retry">Retry</string>
     <string name="permissions_message">For sharing a photo you have to give the application the permission to write in your external storage! Will you?</string>
 
-
     <string-array name="Colors">
         <item>Red</item>
         <item>Green</item>

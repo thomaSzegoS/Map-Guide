@@ -19,6 +19,10 @@
             android:id="@+id/imageVIew"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_marginStart="0dp"
             android:layout_weight="0"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher" />
@@ -52,8 +56,8 @@
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
-                android:layout_gravity="center"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
                 android:text="Point:" />
 
             <TextView
@@ -61,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:layout_gravity="center"
+                android:layout_marginTop="7dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0"
                 android:text="This is the point" />
@@ -71,7 +75,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="0"
-                android:background="?android:attr/selectableItemBackground"
+                android:background="@color/common_google_signin_btn_text_light_disabled"
                 app:srcCompat="@drawable/go" />
 
             <ImageButton
@@ -80,8 +84,8 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="0"
-                android:background="?android:attr/selectableItemBackground"
-                android:src="@drawable/ic_favorite_black_24dp" />
+                android:background="@color/common_google_signin_btn_text_dark_disabled"
+                app:srcCompat="@drawable/ic_favorite_black_24dp" />
 
             <ImageButton
                 android:id="@+id/share_btn"
@@ -91,6 +95,7 @@
                 android:layout_weight="0"
                 android:background="?android:attr/selectableItemBackground"
                 android:src="@android:drawable/ic_menu_share" />
+
         </LinearLayout>
 
         <LinearLayout

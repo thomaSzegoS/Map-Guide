@@ -3,12 +3,13 @@ package com.example.mapguide.mapguide.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
@@ -16,10 +17,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.text.Editable;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.Help;
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.NetworkStatus;
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.Settings;
@@ -27,9 +30,7 @@ import com.example.mapguide.mapguide.Adapters.MyAdapter;
 import com.example.mapguide.mapguide.Model.Image;
 import com.example.mapguide.mapguide.R;
 import com.example.mapguide.mapguide.Services.FlickrService;
-import com.example.mapguide.mapguide.Services.GoogleSignInActivity;
 import com.example.mapguide.mapguide.Services.NetworkAvailability;
-import com.google.android.gms.common.SignInButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,12 +55,6 @@ public class MainActivity extends AppCompatActivity {
     private FrameLayout progressBar;
     private PrettyDialog dialog;
 
-    private SignInButton signInButton;
-    private Button signOutButton;
-    TextView statusTextView;
-
-    private GoogleSignInActivity gsi;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,37 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar);
         network = new NetworkAvailability(this);
-
-
-
-
-
-        /****** Reacting with GoogleSignInActivity()  ******/
-        statusTextView = (TextView) findViewById(R.id.status_textview);
-
-        signInButton = (SignInButton) findViewById(R.id.sign_in_button);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gsi = new GoogleSignInActivity();
-                gsi.signIn();
-                statusTextView.setText(gsi.getAcctStatus());
-            }
-        });
-
-        signOutButton = (Button) findViewById(R.id.SignOutButton);
-        signOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gsi.signOut();
-                statusTextView.setText(gsi.getAcctStatus());
-            }
-        });
-        /************************************************/
-
-
-
-
         if (network.isNetworkWorks()) {
             progressBar.setVisibility(View.GONE);
             r.GetTop20();
@@ -123,25 +87,6 @@ public class MainActivity extends AppCompatActivity {
                     .setAnimationEnabled(true)
                     .show();
         }
-
-
-        /* Needed code for new UI
-
-
-        Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-
-        RecyclerView recyclerView =findViewById(R.id.rv_list);
-        List<item> mlist = new ArrayList<>();
-        mlist.add(new item(R.drawable.ic_action_name,"Cities",2500));
-
-        Adapter adapter = new Adapter( this,mlist);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-         */
-
-
 
 
         button.setOnClickListener(new View.OnClickListener() {
