@@ -25,14 +25,22 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Heading"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@color/common_google_signin_btn_text_dark_disabled" />
 
             <TextView
                 android:id="@+id/textViewDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Description" />
+                android:text="Description"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="lat"
-                    android:visibility="invisible" />
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/id_lon"
@@ -53,14 +61,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="lon"
-                    android:visibility="invisible" />
+                    android:visibility="gone" />
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@color/common_google_signin_btn_text_dark_disabled" />
 
         </LinearLayout>
 

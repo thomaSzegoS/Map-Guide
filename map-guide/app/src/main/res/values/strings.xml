@@ -11,7 +11,7 @@
     <string name="checkForNetworkMessage">You have to be online to continue</string>
     <string name="exitTheAppMessage">Are you sure you want to exit the app?</string>
     <string name="retry">Retry</string>
-
+    <string name="permissions_message">For sharing a photo you have to give the application the permission to write in your external storage! Will you?</string>
 
     <string-array name="Colors">
         <item>Red</item>
