@@ -3,8 +3,6 @@ package com.example.mapguide.mapguide.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +19,6 @@ import android.text.Editable;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.Help;
 import com.example.mapguide.mapguide.Activities.MainMenuActivities.NetworkStatus;
@@ -56,10 +53,12 @@ public class MainActivity extends AppCompatActivity {
     private PrettyDialog dialog;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         button = (Button) findViewById(R.id.button);
         searchBtn = findViewById(R.id.searchBtn);

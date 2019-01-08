@@ -22,11 +22,8 @@
             android:value="AIzaSyBU3KXc1BddyjLcy-tS3dr4cQKQt9aHKKo" />
 
         <activity android:name=".Activities.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".Activities.MapActivity" />
         <activity android:name=".Activities.Fullscreen" />
@@ -36,16 +33,29 @@
         <activity
             android:name=".Activities.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".Activities.MainActivity"/>
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.MainActivity" />
-        <activity android:name=".Activities.MainMenuActivities.Help"
+            android:parentActivityName=".Activities.MainActivity" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Activities.MainActivity" />
+
+        <activity
+            android:name=".Activities.MainMenuActivities.Help"
             android:label="Help"
-            android:parentActivityName=".Activities.MainActivity"/>
-        <activity android:name=".Activities.MainMenuActivities.Settings"
+            android:parentActivityName=".Activities.MainActivity" />
+        <activity
+            android:name=".Activities.MainMenuActivities.Settings"
             android:label="Settings"
-            android:parentActivityName=".Activities.MainActivity"/>
+            android:parentActivityName=".Activities.MainActivity" />
+        <activity android:name=".Activities.WelcomeScreen" android:theme="@style/Theme.AppCompat.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
