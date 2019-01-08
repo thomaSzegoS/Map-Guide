@@ -1,5 +1,7 @@
 package com.example.mapguide.mapguide.Activities;
 
+//This is a class for creating the getters and setters
+
 public class ListItem {
 
     private String head;
