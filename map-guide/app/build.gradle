@@ -41,4 +41,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
     implementation 'com.github.mjn1369:prettydialog:1.0.4'
     implementation 'com.budiyev.android:circular-progress-bar:1.1.9'
+
+    //tests
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
 }
