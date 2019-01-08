@@ -23,6 +23,10 @@ import com.squareup.picasso.Picasso;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+//My adapter class
+//This class is responsible for the creation of ViewHolder and onBindViewHolder
+//This class is also responsible for creating a List , a context and getting the Context from tabActivity
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private static final String TAG = "MyAdapter";
     private List<ListItem> listItems;
@@ -68,6 +72,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 .into((holder.imageView));
 
     }
+
+    //Use of getters
+    //Lat,ItemCount,Image,Title,Description
 
     @Override
     public int getItemCount() {
