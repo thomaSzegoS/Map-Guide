@@ -13,13 +13,11 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertNotNull;
 
 public class SettingsTest {
-
     @Rule
     public ActivityTestRule<Settings> mActivityTestRule = new ActivityTestRule<>(Settings.class);
 
     private Settings mActivity = null;
-
-
+    
     @Before
     public void setUp() throws Exception {
         mActivity = mActivityTestRule.getActivity();
