@@ -5,15 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.MainMenuActivities.Help">
+    tools:context=".Activities.MainMenuActivities.About">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:id="@+id/textHelp"
-        android:textSize="15dp"/>
-
+        android:id="@+id/textAbout"
+        android:textSize="20dp"/>
 
 </RelativeLayout>
