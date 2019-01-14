@@ -30,10 +30,7 @@
         <activity android:name=".Activities.TabActivity" />
         <activity android:name=".Services.GoogleSignInActivity" />
         <activity android:name=".Activities.MainMenuActivities.NetworkStatus" />
-        <activity
-            android:name=".Activities.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".Activities.MainActivity" />
+
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
@@ -43,6 +40,12 @@
             android:name=".Activities.MainMenuActivities.Help"
             android:label="Help"
             android:parentActivityName=".Activities.MainActivity" />
+
+        <activity
+            android:name=".Activities.MainMenuActivities.About"
+            android:label="About"
+            android:parentActivityName=".Activities.MainActivity" />
+
         <activity
             android:name=".Activities.MainMenuActivities.Settings"
             android:label="Settings"

@@ -1,6 +1,5 @@
 package com.example.mapguide.mapguide.Activities.MainMenuActivities;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -13,8 +12,6 @@ public class Help extends AppCompatActivity {
 
 
     TextView textView;
-
-
 
 
     @Override
