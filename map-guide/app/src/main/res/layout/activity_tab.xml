@@ -37,7 +37,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:text="Tittle:" />
+                android:text="Tittle:"
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/textTitle"
@@ -45,7 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="0"
-                android:text="This is the TItle" />
+                android:text="This is the TItle"
+                android:textSize="20dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -58,7 +60,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="Point:" />
+                android:text="Point:"
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/textLocation"
@@ -68,7 +71,8 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0"
-                android:text="This is the point" />
+                android:text="This is the point"
+                android:textSize="20dp"/>
 
             <ImageButton
                 android:id="@+id/btnMap"
@@ -109,7 +113,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Descriptions:" />
+                android:text="Description:"
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/textDesc"
@@ -117,7 +122,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="0"
-                android:text="This is the place @android:string/fingerprint_icon_content_description" />
+                android:text="This is the place @android:string/fingerprint_icon_content_description"
+                android:textSize="20dp"/>
         </LinearLayout>
 
     </LinearLayout>
